@@ -1,4 +1,4 @@
-	pipeline {
+pipeline {
 	
 		agent any 
 		tools {
@@ -16,7 +16,10 @@
        }
 	   }
 		stage('Git Checkout') {
-		git credentialsId: 'Git', url: 'https://github.com/srinivas0256/Test.git'
+			steps{
+				git credentialsId: 'Git', 
+				url: 'https://github.com/srinivas0256/Test.git'
+				}
 		}
 		
 		stage('Unit Test') {
@@ -27,3 +30,5 @@
 	  }
 	 }
 	 }
+		
+		
