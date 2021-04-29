@@ -1,11 +1,10 @@
-pipeline {
+	pipeline {
 	
 		agent any 
 		tools {
 		jdk 'jdk'
 		maven 'maven'
-		
-		
+		}
 	stages {
 	
 		stage ('Initialize') {
@@ -15,6 +14,7 @@ pipeline {
                     echo "M2_HOME = ${M2_HOME}"
                 ''' 
        }
+	   }
 		stage('Git Checkout') {
 		git credentialsId: 'Git', url: 'https://github.com/srinivas0256/Test.git'
 		}
@@ -24,5 +24,6 @@ pipeline {
 				echo "~~~~~~~Munit Test Checking Code Coverage~~~~~~~~~"
 					bat 'mvn clean test'
       }
-	  
-}
+	  }
+	 }
+	 }
