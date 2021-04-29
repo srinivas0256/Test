@@ -25,3 +25,4 @@ pipeline {
 					bat 'mvn clean test'
       }
 	  
+}
