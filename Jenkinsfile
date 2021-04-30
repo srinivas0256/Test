@@ -28,8 +28,8 @@
 					bat 'mvn clean test'
 				}
 		}
-		stage('Upload Artifact to Jfrog')
-			steps{
+		stage('Upload Artifact to Jfrog') {
+			steps {
 				echo"Publishing to Artifactory"
 				def server = Artifactory.server "SERVER_ID"
 				 rtUpload (
@@ -49,5 +49,6 @@
 	  
 	 }
 	 }
-	}
+	 }
+	 }
 		
