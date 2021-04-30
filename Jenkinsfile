@@ -1,4 +1,4 @@
-		pipeline {
+	pipeline {
 	
 		agent any 
 		tools {
@@ -37,7 +37,7 @@
                     buildName: JOB_NAME,
                     buildNumber: BUILD_NUMBER,
                     serverId: SERVER_ID, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
-					}
+				}
                     spec: '''{
                               "files": [
                                  { "pattern": "**/target/*.jar",
@@ -53,4 +53,3 @@
 	 }
 	 }
 	 }
-		
