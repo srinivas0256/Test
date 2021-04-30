@@ -25,11 +25,10 @@ pipeline {
                  
                 rtMavenDeployer (
                     id: 'maven-deployer',
-                    serverId: 'artifactory-server-id',
-                    releaseRepo: ARTIFACTORY_LOCAL_RELEASE_REPO,
-                    snapshotRepo: ARTIFACTORY_LOCAL_SNAPSHOT_REPO,
-                    threads: 6,
-                    properties: ['BinaryPurpose=Technical-BlogPost', 'Team=DevOps-Acceleration']
+                    serverId: 'Artifactory',
+                    releaseRepo: libs-release-local,
+                    snapshotRepo: libs-snapshot-local,
+                    
                 )
             }
         }
