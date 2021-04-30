@@ -29,11 +29,12 @@ pipeline {
 				}
 		}
 		 stage ('upload') {
-    gitlabCommitStatus("upload") {
-      def server = Artifactory.server "Artifactory"
-      def buildInfo = Artifactory.newBuildInfo()
-      buildInfo.env.capture = true
-      buildInfo.env.collect()
+			 steps {
+   
+      			def server = Artifactory.server "Artifactory"
+     			def buildInfo = Artifactory.newBuildInfo()
+      			buildInfo.env.capture = true
+      			buildInfo.env.collect()
 
       def uploadSpec = """{
         "files": [
