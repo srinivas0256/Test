@@ -1,4 +1,4 @@
-	pipeline {
+		pipeline {
 	
 		agent any 
 		tools {
@@ -31,11 +31,13 @@
 		stage('Upload Artifact to Jfrog') {
 			steps {
 				echo"Publishing to Artifactory"
-				def server = Artifactory.server "SERVER_ID"
-				 rtUpload (
+				step { 
+				    def server = Artifactory.server "SERVER_ID"
+				    rtUpload (
                     buildName: JOB_NAME,
                     buildNumber: BUILD_NUMBER,
                     serverId: SERVER_ID, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+					}
                     spec: '''{
                               "files": [
                                  { "pattern": "**/target/*.jar",
