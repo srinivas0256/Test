@@ -1,4 +1,4 @@
-pipeline {
+	pipeline {
 	
 		agent any 
 		tools {
@@ -28,35 +28,25 @@ pipeline {
 					bat 'mvn clean test'
 				}
 		}
-		 stage ('upload') {
-			 steps {
-   
-      			def server = Artifactory.server "Artifactory"
-     			def buildInfo = Artifactory.newBuildInfo()
-      			buildInfo.env.capture = true
-      			buildInfo.env.collect()
-
-      def uploadSpec = """{
-        "files": [
-          {
-            "pattern": "**/target/*.jar",
-            "target": "libs-snapshot-local"
-          }, {
-            "pattern": "**/target/*.pom",
-            "target": "libs-snapshot-local"
-          }, {
-            "pattern": "**/target/*.war",
-            "target": "libs-snapshot-local"
-          }
-        ]
-      }"""
-      // Upload to Artifactory.
-      server.upload spec: uploadSpec, buildInfo: buildInfo
-
-      buildInfo.retention maxBuilds: 10, maxDays: 7, deleteBuildArtifacts: true
-      // Publish build info.
-      server.publishBuildInfo buildInfo
-    }
-  }
-}
-}
+		stage('Upload Artifact to Jfrog')
+			steps{
+				echo"Publishing to Artifactory"
+				def server = Artifactory.server "SERVER_ID"
+				 rtUpload (
+                    buildName: JOB_NAME,
+                    buildNumber: BUILD_NUMBER,
+                    serverId: SERVER_ID, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
+                    spec: '''{
+                              "files": [
+                                 { "pattern": "**/target/*.jar",
+								   "target": "libs-snapshot-local"
+                                   "recursive": "false"
+                                } 
+                             ]
+                        }'''    
+                    )
+	  
+	  
+	 }
+	 }
+		
