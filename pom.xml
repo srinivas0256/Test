@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
@@ -13,9 +12,21 @@
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<app.runtime>4.3.0</app.runtime>
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
+		<mule.version>${securemule.version}</mule.version>
+		<!-- <mule.home>${MULE_HOME}</mule.home> -->
+		<anypoint.username>${secure::anypoint.username}</anypoint.username>
+		<anypoint.password>${secure::anypoint.password}</anypoint.password>
+		<cloudhub.env>${secure::cloudhub.env}</cloudhub.env>
+		<cloudhub.region>${secure::cloudhub.region}</cloudhub.region>
+		<cloudhub.workers>${secure::cloudhub.workers}</cloudhub.workers>
+		<cloudhub.workerType>${secure::cloudhub.workersType}</cloudhub.workerType>
+		<anypoint.uri>${secure::anypoint.uri}</anypoint.uri>
+		<build.number>0</build.number>
+		<maven.build.timestamp.format>yyMMddHHmmss</maven.build.timestamp.format>
+		
+		
 	</properties>
 
 	<build>
@@ -49,7 +60,13 @@
             <version>1.2.0</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-	</dependencies>
+		<dependency>
+            <groupId>com.mulesoft.modules</groupId>
+            <artifactId>mule-secure-configuration-property-module</artifactId>
+            <version>1.2.3</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+    </dependencies>
 
 	<repositories>
           <repository>
