@@ -42,6 +42,14 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+					<anypoint.username>${secure::anypoint.username}</anypoint.username>
+					<anypoint.password>${secure::anypoint.password}</anypoint.password>
+					<cloudhub.env>${secure::cloudhub.env}</cloudhub.env>
+					<cloudhub.region>${secure::cloudhub.region}</cloudhub.region>
+					<cloudhub.workers>${secure::cloudhub.workers}</cloudhub.workers>
+					<cloudhub.workerType>${secure::cloudhub.workersType}</cloudhub.workerType>
+					<anypoint.uri>${secure::anypoint.uri}</anypoint.uri>
+					<maven.build.timestamp.format>yyMMddHHmmss</maven.build.timestamp.format>
 				</configuration>
 			</plugin>
 		</plugins>
