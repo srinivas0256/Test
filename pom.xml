@@ -26,11 +26,6 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>
-			<plugin>
-        	<groupId>org.apache.maven.plugins</groupId>
-        	<artifactId>maven-deploy-plugin</artifactId>
-       		 <version>3.0.0-M1</version>
-    	  </plugin>
 			
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
@@ -114,5 +109,12 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+	<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>DESKTOP-IQ00T1P-releases</name>
+        <url>http://localhost:8081/artifactory/libs-release</url>
+    </repository>
+</distributionManagement>
 
 </project>
