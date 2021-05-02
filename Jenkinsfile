@@ -34,10 +34,27 @@ pipeline {
                     id: "Artifactory",
                     url: "http://localhost:8081/artifactory",
                     credentialsId: "Jfrog"
+					
+			
                 )
 			}
 		}
+		stage('Upload to Jfrog) {
+			steps {
+				rtUpload (
+					id: "Artifactory",
+                    spec: '''{
+						"files": [
+					{
+						"pattern": "**/target/*.jar",
+						"target": "libs-release/"
+            }
+         ]
+    }'''
+					
+				
 	}
 }
-		
+}
+}
 		
