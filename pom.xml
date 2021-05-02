@@ -29,12 +29,12 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
+				<version>1.7</version>
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
       					<uri>https://anypoint.mulesoft.com</uri>
-      					<muleVersion>${app.runtime}</muleVersion>
+      					<muleVersion>4.3.0</muleVersion>
       					<server>Cloudhub</server>
       					<applicationName>time-demo-api</applicationName>
       					<environment>Sandbox</environment>
