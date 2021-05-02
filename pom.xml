@@ -27,24 +27,14 @@
 				<version>3.0.0</version>
 			</plugin>
 			<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>3.0.0-M1</version>
-        </plugin>
-         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.0.0-M1</version>
-        </plugin>
-			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
+				<version>1.7</version>
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
       					<uri>https://anypoint.mulesoft.com</uri>
-      					<muleVersion>${app.runtime}</muleVersion>
+      					<muleVersion>4.3.0</muleVersion>
       					<server>Cloudhub</server>
       					<applicationName>time-demo-api</applicationName>
       					<environment>Sandbox</environment>
