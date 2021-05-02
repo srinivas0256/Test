@@ -14,17 +14,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<app.runtime>4.3.0</app.runtime>
 		<mule.maven.plugin.version>3.3.5</mule.maven.plugin.version>
-		<mule.version>${securemule.version}</mule.version>
-		<!-- <mule.home>${MULE_HOME}</mule.home> -->
-		<anypoint.username>${secure::anypoint.username}</anypoint.username>
-		<anypoint.password>${secure::anypoint.password}</anypoint.password>
-		<cloudhub.env>${secure::cloudhub.env}</cloudhub.env>
-		<cloudhub.region>${secure::cloudhub.region}</cloudhub.region>
-		<cloudhub.workers>${secure::cloudhub.workers}</cloudhub.workers>
-		<cloudhub.workerType>${secure::cloudhub.workersType}</cloudhub.workerType>
-		<anypoint.uri>${secure::anypoint.uri}</anypoint.uri>
-		<build.number>0</build.number>
-		<maven.build.timestamp.format>yyMMddHHmmss</maven.build.timestamp.format>
 		
 		
 	</properties>
@@ -42,13 +31,21 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<anypoint.username>${secure::anypoint.username}</anypoint.username>
-					<anypoint.password>${secure::anypoint.password}</anypoint.password>
-					<cloudhub.env>${secure::cloudhub.env}</cloudhub.env>
-					<cloudhub.region>${secure::cloudhub.region}</cloudhub.region>
-					<cloudhub.workers>${secure::cloudhub.workers}</cloudhub.workers>
-					<cloudhub.workerType>${secure::cloudhub.workersType}</cloudhub.workerType>
-					<anypoint.uri>${secure::anypoint.uri}</anypoint.uri>
+					<cloudHubDeployment>
+      					<uri>https://anypoint.mulesoft.com</uri>
+      					<muleVersion>${app.runtime}</muleVersion>
+      					<server>cloudhub</server>
+      					<applicationName>time-demo-api</applicationName>
+      					<environment>Sandbox</environment>
+      					<region>us-east-2</region>
+     					<workers>1</workers>
+      					<workerType>MICRO</workerType>
+      					<properties>
+       						 <key>value</key>
+     					 </properties>
+    				</cloudHubDeployment>
+				
+					
 					<maven.build.timestamp.format>yyMMddHHmmss</maven.build.timestamp.format>
 				</configuration>
 			</plugin>
