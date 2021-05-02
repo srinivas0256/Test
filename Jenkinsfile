@@ -39,24 +39,13 @@ pipeline {
                 )
 			}
 		}
-		stage('Upload to Jfrog') {
-			steps {
-				rtUpload (
-					id: "Artifactory"
-                    spec: '''{
-						"files": [
-					{
-						"pattern": "**/target/*.jar",
-						"target": "libs-release/"
-            }
-         ]
-    }'''
-					
-				
-)	
-					
-}
-}
+		
+	stage('Publishing Artifactory To JFrog') {
+      steps {
+		echo "~~~~~~~Publishing to Artifactory~~~~~~~~~"
+        bat 'mvn clean package deploy -U -DskipMunitTests'
+      }
+    }
 }
 }
 		
