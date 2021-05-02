@@ -42,7 +42,7 @@ pipeline {
 		stage('Upload to Jfrog') {
 			steps {
 				rtUpload (
-					id: "Artifactory",
+					id: "Artifactory"
                     spec: '''{
 						"files": [
 					{
