@@ -28,24 +28,17 @@ pipeline {
 					bat 'mvn clean test'
 				}
 			}
-		 stage ('Artifactory Configuration') {
+		 stage ('Publishing Artifacts to Jfrog') {
             steps {
                 rtServer (
                     id: "Artifactory",
                     url: "http://localhost:8081/artifactory",
                     credentialsId: "Jfrog"
-					
-			
                 )
+				bat 'mvn clean package deploy -U -DskipMunitTests'
 			}
 		}
 		
-	stage('Publishing Artifactory To JFrog') {
-      steps {
-		echo "~~~~~~~Publishing to Artifactory~~~~~~~~~"
-        bat 'mvn clean package deploy -U -DskipMunitTests'
-      }
-    }
+	
 }
 }
-		
