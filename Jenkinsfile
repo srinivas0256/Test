@@ -39,7 +39,7 @@ pipeline {
                 )
 			}
 		}
-		stage('Upload to Jfrog) {
+		stage('Upload to Jfrog') {
 			steps {
 				rtUpload (
 					id: "Artifactory",
