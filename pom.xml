@@ -4,7 +4,7 @@
 
 	<groupId>com.mycompany</groupId>
 	<artifactId>time-demo-api</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
 	<name>time-demo-api</name>
@@ -83,6 +83,13 @@
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
+	<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>DESKTOP-IQ00T1P-snapshots</name>
+        <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+</distributionManagement>
 
 	<repositories>
           <repository>
@@ -109,12 +116,6 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-	<distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>DESKTOP-IQ00T1P-releases</name>
-        <url>http://localhost:8081/artifactory/libs-release</url>
-    </repository>
-</distributionManagement>
+	
 
 </project>
