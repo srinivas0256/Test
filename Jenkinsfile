@@ -1,4 +1,4 @@
-		pipeline {
+pipeline {
 	
 		agent any 
 		tools {
@@ -27,31 +27,25 @@
 				echo "Munit Test Checking Code Coverage"
 					bat 'mvn clean test'
 				}
+			}
+		 stage ('Artifactory Configuration') {
+            steps {
+                rtServer (
+                    id: "Artifactory",
+                    url: "http://localhost:8081/artifactory",
+                    credentialsId: "Jfrog"
+					
+			
+                )
+			}
 		}
-		stage('Upload Artifact to Jfrog') {
-			steps {
-				echo"Publishing to Artifactory"
-				step { 
-				    def server = Artifactory.server "SERVER_ID"
-				    rtUpload (
-                    buildName: JOB_NAME,
-                    buildNumber: BUILD_NUMBER,
-                    serverId: SERVER_ID, // Obtain an Artifactory server instance, defined in Jenkins --> Manage:
-                    spec: '''{
-                              "files": [
-                                 { "pattern": "**/target/*.jar",
-								   "target": "libs-snapshot-local"
-                                   "recursive": "false"
-                                } 
-                             ]
-                        }'''    
-                    )
-				}
-	  
-	  
-	 }
-	 }
-	 }
-	 }
 		
+	stage('Publishing Artifactory To JFrog') {
+      steps {
+		echo "~~~~~~~Publishing to Artifactory~~~~~~~~~"
+        bat 'mvn clean package deploy -U -DskipMunitTests'
+      }
+    }
+}
+}
 		
