@@ -31,7 +31,7 @@ pipeline {
 		 stage ('Publishing Artifacts to Jfrog') {
             steps {
                 rtServer (
-                    id: "central",
+                    id: "Artifactory",
                     url: "http://localhost:8081/artifactory",
                     credentialsId: "Artifactory"
                 )
