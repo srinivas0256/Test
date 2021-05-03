@@ -84,13 +84,17 @@
         </dependency>
     </dependencies>
 	<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>DESKTOP-IQ00T1P-releases</name>
+        <url>http://localhost:8081/artifactory/oneweb-snapshot</url>
+    </repository>
     <snapshotRepository>
         <id>snapshots</id>
         <name>DESKTOP-IQ00T1P-snapshots</name>
-        <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+        <url>http://localhost:8081/artifactory/oneweb-snapshot</url>
     </snapshotRepository>
 </distributionManagement>
-
 	<repositories>
           <repository>
             <id>anypoint-exchange-v2</id>
