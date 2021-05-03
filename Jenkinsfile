@@ -1,48 +1,45 @@
 pipeline {
-    agent any
-
-    stages {
-        stage ('Clone') {
+	
+		agent any 
+		tools {
+		jdk 'jdk'
+		maven 'maven'
+		}
+	stages {
+	
+		stage ('Initialize') {
             steps {
-                git branch: 'master', url: "https://github.com/srinivas0256/Test.git"
-            }
-        }
-
-        stage ('Artifactory Configuration') {
+                bat '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+       }
+	   }
+		stage('Git Checkout') {
+			steps{
+				git credentialsId: 'Git', 
+				url: 'https://github.com/srinivas0256/Test.git'
+				}
+		}
+		
+		stage('Unit Test') {
+			steps {
+				echo "Munit Test Checking Code Coverage"
+					bat 'mvn clean test'
+				}
+			}
+		 stage ('Publishing Artifacts to Jfrog') {
             steps {
                 rtServer (
                     id: "Artifactory",
-                    url: "http://localhost:8081/artifactory/",
-                  
+                    url: "http://localhost:8081/artifactory",
+                    credentialsId: "Artifactory"
                 )
-
-                rtMavenResolver (
-                    id: 'maven-resolver',
-                    serverId: 'Artifactory',
-                    releaseRepo: libs-release-local,
-                    snapshotRepo: libs-snapshot-local
-                )  
-                 
-                rtMavenDeployer (
-                    id: 'maven-deployer',
-                    serverId: 'Artifactory',
-                    releaseRepo: libs-release-local,
-                    snapshotRepo: libs-snapshot-local,
-                    
-                )
-            }
-        }
-        
-        stage('Build Maven Project') {
-            steps {
-                rtMavenRun (
-                    tool: 'maven',
-                    pom: 'pom.xml',
-                    goals: '-U clean install',
-                    deployerId: "maven-deployer",
-                    resolverId: "maven-resolver"
-                )
-            }
-        }
+				bat 'mvn clean package deploy -U -DskipMunitTests'
+			}
 		}
-		}
+		
+	
+}
+}
+	
