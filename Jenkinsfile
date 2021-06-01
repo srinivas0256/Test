@@ -41,8 +41,8 @@ pipeline {
 		
 		    stage('Deploy CloudHub') {
       environment {
-        credentialsId: anypoint.credentails'
-	      url: https://anypoint.mulesoft.com/
+        credentialsId: 'anypoint.credentails',
+	      url: 'https://anypoint.mulesoft.com/cloudhub'
        // muleEnv = "${env.cloudhub_env.toLowerCase()}"
       }
       steps {
