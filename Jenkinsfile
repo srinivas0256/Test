@@ -31,7 +31,7 @@ pipeline {
 		 stage ('Publishing Artifacts to Jfrog') {
             steps {
                 rtServer (
-                    id: "central",
+                    id: "Artifactory",
                     url: "http://localhost:8081/artifactory",
                     credentialsId: "Artifactory"
                 )
@@ -39,7 +39,18 @@ pipeline {
 			}
 		}
 		
+		    stage('Deploy CloudHub') {
+      environment {
+        credentialsId: anypoint.credentails'
+       // muleEnv = "${env.cloudhub_env.toLowerCase()}"
+      }
+      steps {
+		echo "----Deploy To CloudHub----- "
+        echo "----Running Build ${env.BUILD_ID} on muleEnv - dev----- "
+        bat 'mvn clean package deploy -DskipMunitTests -DmuleDeploy -P 
+      }
+    }
+		
 	
 }
 }
-	
