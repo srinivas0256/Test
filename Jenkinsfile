@@ -40,18 +40,20 @@ pipeline {
 		}
 		
 		    stage('Deploy CloudHub') {
-      environment {
-        credentialsId: 'anypoint.credentails',
-	      url: 'https://anypoint.mulesoft.com/cloudhub'
+				steps {
+    
+        credentialsId: anypoint.credentails'
+		url: https://anypoint.mulesoft.com/cloudhub/
        // muleEnv = "${env.cloudhub_env.toLowerCase()}"
-      }
-      steps {
+ 
+     
 		echo "----Deploy To CloudHub----- "
         echo "----Running Build ${env.BUILD_ID} on muleEnv - dev----- "
         bat 'mvn clean package deploy -DskipMunitTests -DmuleDeploy -P 
-      }
+      
     }
 		
 	
+}
 }
 }
