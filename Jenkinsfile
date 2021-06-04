@@ -48,7 +48,7 @@ pipeline {
 			    steps {
 		echo "----Deploy To CloudHub----- "
         echo "----Running Build ${env.BUILD_ID} on muleEnv - dev----- "
-        bat 'mvn clean package deploy -DskipMunitTests -DmuleDeploy -P' 
+        bat 'mvn clean package deploy -DskipMunitTests -DmuleDeploy' 
 			    }
     }
 		
