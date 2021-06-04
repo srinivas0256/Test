@@ -42,9 +42,8 @@ pipeline {
 		      stage('Deploy CloudHub') 
 		steps {
 
-        withCredentials([string(credentialsId: 'Anypoint', variable: 'Anypoint')]) {
+        withCredentials([string(credentialsId: 'Anypoint', variable: 'Anypoint')]) 
     
-      }	
 					    
 			    
 		echo "----Deploy To CloudHub----- "
