@@ -39,9 +39,9 @@ pipeline {
 			}
 		}
 		
-		    stage('Deploy CloudHub') {
+		      stage('Deploy CloudHub') {
 			 environment {
-        USER_CREDENTIALS = credentials('anypoint.credentials')
+        USER_CREDENTIALS = credentials('Anypoint')
        // muleEnv = "${env.cloudhub_env.toLowerCase()}"
       }	
 					    
@@ -52,7 +52,5 @@ pipeline {
 			    }
     }
 		
-	
 }
 }
-
