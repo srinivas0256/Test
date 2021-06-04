@@ -39,7 +39,7 @@ pipeline {
 			}
 		}
 		
-	stage ('Deploy CloudHub') 
+		stage ('Deploy CloudHub') {
 		steps {
 
         		withCredentials([string(credentialsId: 'Anypoint', variable: 'Anypoint')]) 
@@ -50,5 +50,6 @@ pipeline {
 			    
     }
 		
+}
 }
 }
