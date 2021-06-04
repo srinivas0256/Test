@@ -37,6 +37,7 @@
 					<cloudHubDeployment>
       					<uri>https://anypoint.mulesoft.com</uri>
       					<muleVersion>4.3.0</muleVersion>
+					<server>cloudhub</server>
       					<applicationName>time-demo-api</applicationName>
       					<environment>Sandbox</environment>
       					<region>us-east-2</region>
