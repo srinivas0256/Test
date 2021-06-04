@@ -39,16 +39,14 @@ pipeline {
 			}
 		}
 		
-		      stage('Deploy CloudHub') 
+	stage ('Deploy CloudHub') 
 		steps {
 
-        withCredentials([string(credentialsId: 'Anypoint', variable: 'Anypoint')]) 
+        		withCredentials([string(credentialsId: 'Anypoint', variable: 'Anypoint')]) 
     
-					    
-			    
 		echo "----Deploy To CloudHub----- "
-        echo "----Running Build ${env.BUILD_ID} on muleEnv - dev----- "
-        bat 'mvn clean package deploy -DskipMunitTests -DmuleDeploy'
+        	echo "----Running Build ${env.BUILD_ID} on muleEnv - dev----- "
+        	bat 'mvn clean package deploy -DskipMunitTests -DmuleDeploy'
 			    
     }
 		
