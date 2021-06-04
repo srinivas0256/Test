@@ -39,19 +39,18 @@ pipeline {
 			}
 		}
 		
-		      stage('Deploy CloudHub') {
-			 environment {
+		      stage('Deploy CloudHub') 
+		steps {
+
         withCredentials([string(credentialsId: 'Anypoint', variable: 'Anypoint')]) {
-    // some block
-}
-       // muleEnv = "${env.cloudhub_env.toLowerCase()}"
+    
       }	
 					    
-			    steps {
+			    
 		echo "----Deploy To CloudHub----- "
         echo "----Running Build ${env.BUILD_ID} on muleEnv - dev----- "
         bat 'mvn clean package deploy -DskipMunitTests -DmuleDeploy'
-			    }
+			    
     }
 		
 }
